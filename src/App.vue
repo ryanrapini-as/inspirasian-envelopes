@@ -1,8 +1,11 @@
 <template>
   <Layout>
+    <div class="container">
     <h2>Buyers Edge InspirAsian</h2>
-    <div>
+    <h1>Lunar New Year</h1>
+    <div class="envelope-grid">
       <envelope v-for="(item, index) in papers" :key="index" :is-winner="item.isWinner" />
+    </div>
     </div>
   </Layout>
 </template>
@@ -38,6 +41,22 @@ export default {
 </script>
 
 <style scoped>
+
+
+.container {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.envelope-grid {
+    display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
 img {
   width: 200px;
 }

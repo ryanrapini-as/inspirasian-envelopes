@@ -31,7 +31,9 @@
         :class="{ flipped: flipped, opened: opened }"
         v-if="flipped"
       >
+      <div class="message">
         {{ isWinner ? 'You win!' : 'Try Again!' }}
+        </div>
       </div>
     </div>
   </div>
@@ -111,7 +113,7 @@ a:active {
   position: relative;
   display: inline-block;
   height: 300px;
-  width: 200px;
+  width: 150px;
 }
 
 .rotate {
@@ -129,18 +131,10 @@ a:active {
   position: absolute;
   top: 0;
   right: 0;
-
-  width: 200px;
-}
-
-.wrapper {
-  position: absolute;
-  top: 0;
-  right: 0;
   bottom: 0;
   left: 0;
   margin: auto;
-  width: 300px;
+  width: 150px;
   height: 200px;
   text-align: center;
 }
@@ -149,6 +143,12 @@ a:active {
   margin-top: 15px;
   font-size: 12px;
   color: #f00;
+}
+
+.paper .message {
+  font-size: 13px;
+  padding:4px;
+  padding-top: 10px;
 }
 
 .wrapper .paper {
@@ -163,7 +163,7 @@ a:active {
   overflow: hidden;
   border-radius: 0px;
   background-color: #fff;
-  transition: all 2s ease;
+  transition: all 1s ease;
   cursor: pointer;
   z-index: 2;
 }
@@ -248,8 +248,8 @@ a:active {
   border-right: 40px solid transparent;
   transform-origin: 50% 0%;
   transform: rotateX(180deg);
-  animation: openEnvelopeAnimation 1.5 linear;
-  -webkit-animation: openEnvelopeAnimation 1.5s linear;
+  animation: openEnvelopeAnimation 0.75 linear;
+  -webkit-animation: openEnvelopeAnimation 0.75s linear;
   z-index: 3;
 }
 .arrow-up.opened {
