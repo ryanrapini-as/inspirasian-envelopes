@@ -5,15 +5,15 @@
       >{{ beginFlip }}<br />{{ halfFlipped }}<br />{{ flipped }} <br /> {{ opened }}</span
     > -->
       <div class="surprises" :class="{ shown: particles }">
-        <div class="fly">10w</div>
-        <div class="fly">5毛</div>
-        <div class="fly">100</div>
+        <div class="fly">福</div>
+        <div class="fly">888</div>
+        <div class="fly">祿</div>
         <div class="fly">666</div>
         <div class="fly">999</div>
         <div class="fly">
           <i class="hearts"></i>
         </div>
-        <div class="fly">$</div>
+        <div class="fly">合</div>
         <div class="fly">
           <i class="hearts"></i>
         </div>
@@ -269,6 +269,8 @@ a:active {
   position: absolute;
   top: 45px;
   left: 0;
+  margin-left: -25px;
+  right: 0;
   color: #f37476;
   z-index: 0;
   opacity: 0;
@@ -284,42 +286,42 @@ a:active {
 
 .surprises .fly:nth-child(1) {
   animation-delay: 1.5s;
-  left: 150px;
+  left: -20px;
 }
 
 .surprises .fly:nth-child(2) {
   animation-delay: 1.2s;
-  left: 130px;
+  left: 30;
 }
 
 .surprises .fly:nth-child(3) {
   animation-delay: 0.9s;
-  left: 165px;
+  left: 15px;
 }
 
 .surprises .fly:nth-child(4) {
   animation-delay: 1.6s;
-  left: 110px;
+  left: 60px;
 }
 
 .surprises .fly:nth-child(5) {
   animation-delay: 0.3s;
-  left: 175px;
+  left: -45px;
 }
 
 .surprises .fly:nth-child(6) {
   animation-delay: 0.15s;
-  left: 137px;
+  left: 45px;
 }
 
 .surprises .fly:nth-child(7) {
   animation-delay: 1.15s;
-  left: 185px;
+  left: 85px;
 }
 
 .surprises .fly:nth-child(8) {
   animation-delay: 0.75s;
-  left: 118px;
+  left: 0px;
 }
 
 .hearts {
