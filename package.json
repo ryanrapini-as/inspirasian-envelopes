@@ -12,8 +12,6 @@
   },
   "dependencies": {
     "pinia": "^2.0.34",
-    "stylus": "^0.64.0",
-    "stylus-loader": "^8.1.1",
     "vue": "^3.2.47"
   },
   "devDependencies": {
