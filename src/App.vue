@@ -166,6 +166,19 @@ export default {
   grid-auto-rows: minmax(60px, auto);
 }
 
+@media only screen and (max-width: 600px) {
+  .mb-3 {
+    margin-bottom: 0rem;
+  }
+  .envelope-grid {
+    zoom: 0.85;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0px;
+    grid-auto-rows: minmax(60px, auto);
+  }
+}
+
 img {
   width: 200px;
 }

@@ -155,6 +155,14 @@ a:active {
   -webkit-animation: rotateAnimation 0.4s linear;
 }
 
+@media only screen and (max-width: 600px) {
+  .wrapper {
+    height: 100px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+}
+
 .wrapper {
   position: absolute;
   top: 0;
