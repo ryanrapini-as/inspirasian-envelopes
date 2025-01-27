@@ -1,6 +1,6 @@
 <template>
   <div class="envelope">
-    <div class="wrapper">
+    <div class="wrapper" :class="{ shakeable: !stopAlexClickingSoDamnFast }">
       <!-- <span style="font-size: 10px"
       >{{ beginFlip }}<br />{{ halfFlipped }}<br />{{ flipped }} <br /> {{ opened }}</span
     > -->
@@ -57,6 +57,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    stopAlexClickingSoDamnFast: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -77,7 +81,7 @@ export default {
   },
   methods: {
     clickEnvelope() {
-      if (!this.isFlipped) {
+      if (!this.isFlipped && !this.stopAlexClickingSoDamnFast) {
         this.$emit("onClicked");
       }
     },
@@ -256,7 +260,7 @@ a:active {
   /* animation-name: shaking; */
 }
 
-.wrapper .bonus:hover:not(.rotate):not(.rotateBack) {
+.wrapper.shakeable .bonus:hover:not(.rotate):not(.rotateBack) {
   animation-name: shaking;
 }
 

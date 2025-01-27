@@ -6,6 +6,7 @@
       <envelope
         @onClicked="revealEnvelope(index)"
         :is-flipped="flippedPapers.includes(index)"
+        :stop-alex-clicking-so-damn-fast="stopAlexClickingSoDamnFast"
         v-for="(item, index) in papers"
         :key="index"
         :paper="item"
@@ -36,6 +37,7 @@ export default {
       score: 0,
       clicks: 0,
       firstMatch: -1,
+      stopAlexClickingSoDamnFast: false,
     };
   },
   mounted() {
@@ -69,10 +71,12 @@ export default {
           this.firstMatch = -1;
           return;
         }
+        this.stopAlexClickingSoDamnFast = true;
         setTimeout(() => {
           this.removeNumberFromFlippedPapers(index);
           this.removeNumberFromFlippedPapers(this.firstMatch);
           this.firstMatch = -1;
+          this.stopAlexClickingSoDamnFast = false;
         }, 2500);
       } else {
         this.firstMatch = index;
@@ -87,7 +91,6 @@ export default {
         "tiger",
         "monkey",
         "dragon",
-        "dog",
         "ox",
         "pig",
         "rabbit",
