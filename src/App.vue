@@ -13,7 +13,7 @@
       />
     </div>
   </div>
-  <div v-if="showOverlay" class="overlay">
+  <div v-if="reallyWin" class="overlay">
     <div class="overlay-content">
       <h1>🎉 You Win! 🎉</h1>
       <h3>Total clicks: {{ clicks }}</h3>
@@ -38,10 +38,18 @@ export default {
       clicks: 0,
       firstMatch: -1,
       stopAlexClickingSoDamnFast: false,
+      reallyWin: false,
     };
   },
   mounted() {
     this.generateCards();
+  },
+  watch: {
+    showOverlay() {
+      setTimeout(() => {
+        this.reallyWin = true;
+      }, 2500);
+    },
   },
   computed: {
     showOverlay() {
@@ -96,9 +104,9 @@ export default {
         "rabbit",
         "horse",
         "rat",
-        "sheep",
+        "goat",
         "rooster",
-        "snake",
+        "dog",
       ];
       let slice = this.getRandomItems(zodiacs, 6);
       zodiacs = slice.concat(slice.map((zodiac) => "*" + zodiac));
