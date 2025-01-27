@@ -122,7 +122,7 @@ export default {
 <style>
 @font-face {
   font-family: "Shufen Free Trial";
-  src: url("Shufen Free Trial.ttf") format("truetype");
+  src: local("Shufen Free Trial"), url("./public/Shufen Free Trial.ttf");
 }
 a,
 a:link,
