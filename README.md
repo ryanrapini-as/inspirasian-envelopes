@@ -1,14 +1,7 @@
-# Vue 3 example with Pinia
+This game was built for the 2025 Lunar New Year by Ryan Rapini on behalf of the InspirAsian Buyers Edge ERG
 
-## Usage
+It was built in Vue3
 
-```sh
-yarn
-yarn dev
-```
+You can play the game here:
 
-[Open the local server](http://localhost:3000) and inspect using the [Vue Devtools beta](https://chrome.google.com/webstore/detail/vuejs-devtools/ljjemllljcmogpfapbkkighbhhppjdbg?hl=en).
-
-## Related
-
-- [Pinia 🍍](https://github.com/posva/pinia)
+https://ryanrapini-as.github.io/inspirasian-envelopes/
