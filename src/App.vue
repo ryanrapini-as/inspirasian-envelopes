@@ -87,7 +87,7 @@ export default {
         "tiger",
         "monkey",
         "dragon",
-        "horse",
+        "dog",
         "ox",
         "pig",
         "rabbit",
