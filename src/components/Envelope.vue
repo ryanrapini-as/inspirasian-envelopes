@@ -8,8 +8,8 @@
         <div class="fly">福</div>
         <div class="fly">888</div>
         <div class="fly">祿</div>
-        <div class="fly">666</div>
-        <div class="fly">999</div>
+        <div class="fly">366</div>
+        <div class="fly">福</div>
         <div class="fly">
           <i class="hearts"></i>
         </div>
