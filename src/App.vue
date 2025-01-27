@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <h2>Buyers Edge InspirAsian</h2>
-    <h1 class="mb-3">Lunar New Year - Match the Zodiac Signs!</h1>
+    <h3>Buyers Edge InspirAsian</h3>
+    <h2 class="mb-3">Lunar New Year - Match the Zodiac Signs!</h2>
     <div class="envelope-grid">
       <envelope
         @onClicked="revealEnvelope(index)"
