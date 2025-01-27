@@ -126,8 +126,7 @@ export default {
 <style>
 @font-face {
   font-family: "Shufen Free Trial";
-  src: local("Shufen Free Trial"), url("./public/Shufen Free Trial.ttf");
-}
+  src: "https://ryanrapini-as.github.io/inspirasian-envelopes/Shufen%20Free%20Trial.ttf"
 a,
 a:link,
 a:hover,
