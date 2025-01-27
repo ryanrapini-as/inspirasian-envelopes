@@ -23,7 +23,7 @@
         :class="{ rotate: beginFlip, rotateBack: halfFlipped }"
         @mouseenter="showParticles()"
         @mouseleave="hideParticles()"
-        @click="flipEnvelope()"
+        @click="clickEnvelope"
       ></div>
       <div class="arrow-up" :class="{ opened: opened }" v-if="flipped"></div>
       <div
@@ -31,8 +31,11 @@
         :class="{ flipped: flipped, opened: opened }"
         v-if="flipped"
       >
-      <div class="message">
-        {{ isWinner ? 'You win!' : 'Try Again!' }}
+        <div class="message">
+          <template v-if="paper.startsWith('*')">
+            <img :src="paper.slice(1) + '.svg'" alt="bonus" />
+          </template>
+          <template v-else> {{ paper }}</template>
         </div>
       </div>
     </div>
@@ -41,14 +44,19 @@
 
 <script>
 export default {
-  name: 'Envelope',
+  name: "Envelope",
+  emits: ["onClicked"],
   props: {
-    isWinner: {
+    paper: {
       // Specify the expected data type for the prop
-      type: Boolean,
+      type: String,
       // Make the prop required (optional)
       required: true,
-    }
+    },
+    isFlipped: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -62,7 +70,17 @@ export default {
       opened: false,
     };
   },
+  watch: {
+    isFlipped() {
+      this.flipEnvelope();
+    },
+  },
   methods: {
+    clickEnvelope() {
+      if (!this.isFlipped) {
+        this.$emit("onClicked");
+      }
+    },
     flipEnvelope() {
       if (this.flipped == true) {
         this.beginFlip = false;
@@ -71,7 +89,7 @@ export default {
         this.opened = false;
         return;
       }
-      const time = 500;
+      const time = 400;
       this.beginFlip = true;
       setTimeout(() => {
         this.halfFlipped = true;
@@ -79,7 +97,7 @@ export default {
           this.flipped = true;
           setTimeout(() => {
             this.opened = true;
-          }, time + 1000);
+          }, time + 100);
         }, time);
       }, time);
     },
@@ -102,6 +120,10 @@ export default {
 </script>
 
 <style>
+@font-face {
+  font-family: "Shufen Free Trial";
+  src: url("Shufen Free Trial.ttf") format("truetype");
+}
 a,
 a:link,
 a:hover,
@@ -112,19 +134,19 @@ a:active {
 .envelope {
   position: relative;
   display: inline-block;
-  height: 300px;
+  height: 200px;
   width: 150px;
 }
 
 .rotate {
   transform: rotateY(90deg);
-  animation: rotateAnimation 1 linear;
-  -webkit-animation: rotateAnimation 1 linear;
+  animation: rotateAnimation 0.4s linear;
+  -webkit-animation: rotateAnimation 0.4s linear;
 }
 .rotateBack {
   transform: rotateY(180deg);
-  animation: rotateAnimation 1 linear;
-  -webkit-animation: rotateAnimation 1 linear;
+  animation: rotateAnimation 0.4s linear;
+  -webkit-animation: rotateAnimation 0.4s linear;
 }
 
 .wrapper {
@@ -135,7 +157,7 @@ a:active {
   left: 0;
   margin: auto;
   width: 150px;
-  height: 200px;
+  height: 150px;
   text-align: center;
 }
 
@@ -146,9 +168,16 @@ a:active {
 }
 
 .paper .message {
-  font-size: 13px;
-  padding:4px;
+  font-family: "Shufen Free Trial", sans-serif;
+  font-size: 18px;
+  padding: 4px;
   padding-top: 10px;
+}
+
+.paper .message img {
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .wrapper .paper {
@@ -163,13 +192,13 @@ a:active {
   overflow: hidden;
   border-radius: 0px;
   background-color: #fff;
-  transition: all 1s ease;
+  transition: all 0.4s ease;
   cursor: pointer;
   z-index: 2;
 }
 
 .paper.opened {
-  bottom: 50px !important;
+  bottom: 75px !important;
 }
 
 .wrapper .bonus {
@@ -183,7 +212,7 @@ a:active {
   overflow: hidden;
   border-radius: 0px;
   background-color: #f00;
-  transition: all 0.75s ease;
+  transition: all 0.4s ease;
   cursor: pointer;
   z-index: 3;
 }
@@ -192,7 +221,7 @@ a:active {
   position: absolute;
   top: 15px;
   left: 0;
-  content: '';
+  content: "";
   width: 80px;
   height: 20px;
   border-radius: 50%;
@@ -205,7 +234,7 @@ a:active {
   top: 22px;
   left: 50%;
   margin-left: -15px;
-  content: 'BEP';
+  content: "BEP";
   width: 30px;
   height: 30px;
   line-height: 35px;
@@ -224,6 +253,10 @@ a:active {
 
 .wrapper .bonus {
   background-color: #d00;
+  /* animation-name: shaking; */
+}
+
+.wrapper .bonus:hover:not(.rotate):not(.rotateBack) {
   animation-name: shaking;
 }
 
@@ -238,7 +271,7 @@ a:active {
 
 .arrow-up {
   position: absolute;
-  top: 95px;
+  top: 45px;
   left: 50%;
   margin-left: -40px;
   width: 0;
@@ -248,8 +281,8 @@ a:active {
   border-right: 40px solid transparent;
   transform-origin: 50% 0%;
   transform: rotateX(180deg);
-  animation: openEnvelopeAnimation 0.75 linear;
-  -webkit-animation: openEnvelopeAnimation 0.75s linear;
+  animation: openEnvelopeAnimation 0.25 linear;
+  -webkit-animation: openEnvelopeAnimation 0.25s linear;
   z-index: 3;
 }
 .arrow-up.opened {
@@ -331,7 +364,7 @@ a:active {
 .hearts:before,
 .hearts:after {
   position: absolute;
-  content: '';
+  content: "";
   width: 6px;
   height: 10px;
   background: #ff370f;
@@ -347,7 +380,7 @@ a:active {
 }
 
 .jumping:not(.rotate) {
-  animation-duration: 1.2s;
+  animation-duration: 0.6s;
   animation-time-function: ease;
   animation-delay: 0;
   animation-iteration-count: infinite;
