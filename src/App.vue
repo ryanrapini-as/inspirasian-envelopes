@@ -48,6 +48,7 @@ export default {
     showOverlay() {
       setTimeout(() => {
         this.reallyWin = true;
+        sa_event("Game Won with: " + this.clicks + " clicks");
       }, 2500);
     },
   },
@@ -59,6 +60,7 @@ export default {
   methods: {
     restart() {
       location.reload();
+      sa_event("Game Restarted");
     },
     revealEnvelope(index) {
       this.clicks++;
